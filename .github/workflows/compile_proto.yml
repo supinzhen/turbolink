@@ -2,6 +2,8 @@ name: Generate code from proto
 
 on:
   workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   build:
