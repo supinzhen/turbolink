@@ -17,23 +17,28 @@
 
 syntax = "proto3";
 
-package nvidia_ace.status.v1;
+// This proto is in alpha version and might be subject to future changes
+package nvidia_ace.services.a2x_export_config.v1;
 
-// This status message indicates the result of an operation
-// Refer to the rpc using it for more information
-message Status {
-  enum Code {
-    SUCCESS = 0;
-    INFO = 1;
-    WARNING = 2;
-    ERROR = 3;
-  }
-  // Type of message returned by the service
-  // Example value: SUCCESS
-  Code code = 1;
-  // Message returned by the service
-  // Example value: "Audio processing completed successfully!"
-  string message = 2;
+service A2XExportConfigService {
+  rpc GetConfigs(ConfigsTypeRequest) returns (stream A2XConfig) {}
 }
-//nvidia_ace.status.v1
-//v1.0.0
+
+message ConfigsTypeRequest {
+  enum ConfigType {
+    YAML = 0; // YAML should be chosen for updating the A2F MS
+    JSON = 1;
+  }
+  ConfigType config_type = 1;
+}
+
+message A2XConfig {
+  // E.g.:
+  // contains claire_inference.yaml
+  string name = 1;
+  // File Content
+  string content = 2;
+}
+
+// nvidia_ace.services.a2f_export_config.v1
+// v0.1.0%  
