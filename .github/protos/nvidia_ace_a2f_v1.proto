@@ -20,7 +20,7 @@ syntax = "proto3";
 package nvidia_ace_a2f_v1;
 
 import "nvidia_ace_animation_id_v1.proto";
-import "nvidia_ace_status_v1.proto";
+// import "nvidia_ace_status_v1.proto";
 import "nvidia_ace_audio_v1.proto";
 import "nvidia_ace_emotion_with_timecode_v1.proto";
 

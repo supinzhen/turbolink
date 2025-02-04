@@ -17,23 +17,17 @@
 
 syntax = "proto3";
 
-package nvidia_ace_status_v1;
+package nvidia_ace_services_a2f_v1;
 
-// This status message indicates the result of an operation
-// Refer to the rpc using it for more information
-message Status {
-  enum Code {
-    SUCCESS = 0;
-    INFO = 1;
-    WARNING = 2;
-    ERROR = 3;
-  }
-  // Type of message returned by the service
-  // Example value: SUCCESS
-  Code code = 1;
-  // Message returned by the service
-  // Example value: "Audio processing completed successfully!"
-  string message = 2;
+import "nvidia_ace_a2f_v1.proto";
+import "nvidia_ace_status_v1.proto";
+
+service A2FService {
+  // RPC to implement to send audio data to Audio2Face Microservice
+  // An example use for this RPC is a client pushing audio buffers to
+  // Audio2Face Microservice (server)
+  rpc PushAudioStream(stream nvidia_ace_a2f_v1.AudioStream)
+      returns (nvidia_ace_status_v1.Status) {}
 }
-// nvidia_ace.status.v1
+// nvidia_ace.services.a2f.v1
 // v1.0.0

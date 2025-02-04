@@ -21,7 +21,7 @@ package nvidia_ace_animation_data_v1;
 
 import "nvidia_ace_animation_id_v1.proto";
 import "nvidia_ace_audio_v1.proto";
-import "nvidia_ace_status_v1.proto";
+// import "nvidia_ace_status_v1.proto";
 
 import "google/protobuf/any.proto";
 
@@ -70,7 +70,7 @@ message AnimationDataStream {
     // Then one or more animation data message must be sent.
     nvidia_ace_animation_data_v1.AnimationData animation_data = 2;
     // The status must be sent last and may be sent in between.
-    nvidia_ace_status_v1.Status status = 3;
+    // nvidia_ace_status_v1.Status status = 3;
   }
 }
 
