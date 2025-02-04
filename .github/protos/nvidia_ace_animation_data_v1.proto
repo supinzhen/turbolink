@@ -21,7 +21,7 @@ package nvidia_ace_animation_data_v1;
 
 import "nvidia_ace_animation_id_v1.proto";
 import "nvidia_ace_audio_v1.proto";
-// import "nvidia_ace_status_v1.proto";
+import "nvidia_ace_status_v1.proto";
 
 import "google/protobuf/any.proto";
 
@@ -36,16 +36,16 @@ message AnimationDataStreamHeader {
   // stream to the correct pose provider animation graph node. The animation
   // source MSs (e.g. A2F MS) should populate this with their name. (e.g. A2F).
   // Example Value: "A2F MS"
-  optional string source_service_id = 2;
+    string source_service_id = 2;
 
   // Metadata of the audio buffers. This defines the audio clip properties
   // at the beginning the streaming process.
-  optional nvidia_ace_audio_v1.AudioHeader audio_header = 3;
+    nvidia_ace_audio_v1.AudioHeader audio_header = 3;
 
   // Metadata containing the blendshape and joints names.
   // This defines the names of the blendshapes and joints flowing though a
   // stream.
-  optional nvidia_ace_animation_data_v1.SkelAnimationHeader
+    nvidia_ace_animation_data_v1.SkelAnimationHeader
       skel_animation_header = 4;
 
   // Animation data streams use time codes (`time_code`) to define the temporal
@@ -70,14 +70,14 @@ message AnimationDataStream {
     // Then one or more animation data message must be sent.
     nvidia_ace_animation_data_v1.AnimationData animation_data = 2;
     // The status must be sent last and may be sent in between.
-    // nvidia_ace_status_v1.Status status = 3;
+    nvidia_ace_status_v1.Status status = 3;
   }
 }
 
 message AnimationData {
-  optional SkelAnimation skel_animation = 1;
-  optional AudioWithTimeCode audio = 2;
-  optional Camera camera = 3;
+    SkelAnimation skel_animation = 1;
+    AudioWithTimeCode audio = 2;
+    Camera camera = 3;
 
   // Metadata such as emotion aggregates, etc...
   map<string, google.protobuf.Any> metadata = 4;

@@ -103,13 +103,13 @@ message BlendShapeParameters {
   // When a key is not specified the default value is 0
   map<string, float> bs_weight_offsets = 2;
   // Default output bs weight is unclamped. When clamped, range is [0, 1].
-  optional bool enable_clamping_bs_weight = 3;
+    bool enable_clamping_bs_weight = 3;
 }
 
 message EmotionParameters {
   // Transition time value used for temporal smoothing by A2E SDK
   // Expected value range: 0 < val < inf
-  optional float live_transition_time = 1;
+    float live_transition_time = 1;
 
   // Beginning emotion used for temporal emotion smoothing
   // This maps the emotion names to the corresponding emotion strength
@@ -125,7 +125,7 @@ message EmotionParameters {
 message EmotionPostProcessingParameters {
   // Increases the spread between emotion values by pushing them higher or
   // lower. Default value: 1 Min: 0.3 Max: 3
-  optional float emotion_contrast = 1;
+    float emotion_contrast = 1;
 
   // Coefficient for smoothing emotions over time
   //  0 means no smoothing at all (can be jittery)
@@ -133,17 +133,17 @@ message EmotionPostProcessingParameters {
   // Default value: 0.7
   // Min: 0
   // Max: 1
-  optional float live_blend_coef = 2;
+    float live_blend_coef = 2;
 
   // Activate blending between the preferred emotions (passed as input) and the
   // emotions detected by A2E. Default: True
-  optional bool enable_preferred_emotion = 3;
+    bool enable_preferred_emotion = 3;
 
   // Sets the strength of the preferred emotions (passed as input) relative to
   // emotions detected by A2E. 0 means only A2E output will be used for emotion
   // rendering. 1 means only the preferred emotions will be used for emotion
   // rendering. Default value: 0.5 Min: 0 Max: 1
-  optional float preferred_emotion_strength = 4;
+    float preferred_emotion_strength = 4;
 
   // Sets the strength of generated emotions relative to neutral emotion.
   // This multiplier is applied globally after the mix of emotion is done.
@@ -152,14 +152,14 @@ message EmotionPostProcessingParameters {
   // Default value: 0.6
   // Min: 0
   // Max: 1
-  optional float emotion_strength = 5;
+    float emotion_strength = 5;
 
   // Sets a firm limit on the quantity of emotion sliders engaged by A2E
   // emotions with highest weight will be prioritized
   // Default value: 3
   // Min: 1
   // Max: 6
-  optional int32 max_emotions = 6;
+    int32 max_emotions = 6;
 }
 
 message AudioWithEmotion {

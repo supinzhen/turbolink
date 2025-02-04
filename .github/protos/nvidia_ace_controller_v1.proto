@@ -22,7 +22,7 @@ package nvidia_ace_controller_v1;
 import "nvidia_ace_a2f_v1.proto";
 import "nvidia_ace_animation_data_v1.proto";
 import "nvidia_ace_audio_v1.proto";
-// import "nvidia_ace_status_v1.proto";
+import "nvidia_ace_status_v1.proto";
 import "google/protobuf/any.proto";
 
 message AudioStream {
@@ -71,7 +71,7 @@ message Event {
   // Type of the event.
   EventType event_type = 1;
   // Data attached to the event if any.
-  optional google.protobuf.Any metadata = 2;
+    google.protobuf.Any metadata = 2;
 }
 
 // IMPORTANT NOTE: this is an AnimationDataStreamHeader WITHOUT ID
@@ -80,11 +80,11 @@ message Event {
 message AnimationDataStreamHeader {
   // Metadata of the audio buffers. This defines the audio clip properties
   // at the beginning the streaming process.
-  optional nvidia_ace_audio_v1.AudioHeader audio_header = 1;
+    nvidia_ace_audio_v1.AudioHeader audio_header = 1;
   // Metadata containing the blendshape and joints names.
   // This defines the names of the blendshapes and joints flowing through a
   // stream.
-  optional nvidia_ace_animation_data_v1.SkelAnimationHeader
+    nvidia_ace_animation_data_v1.SkelAnimationHeader
       skel_animation_header = 2;
 
   // Time codes indicate the relative progression of an animation data, audio
@@ -115,7 +115,7 @@ message AnimationDataStream {
     // The event may be sent in between.
     Event event = 3;
     // The status must be sent last and may be sent in between.
-    // nvidia_ace_status_v1.Status status = 4;
+    nvidia_ace_status_v1.Status status = 4;
   }
 }
 // nvidia_ace.controller.v1
